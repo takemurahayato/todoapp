@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import List
 from .forms import ListForm
 from django.contrib import messages
-from .models import Priority
 
 #ホーム　タスク一覧
 def home(request):
@@ -58,7 +57,7 @@ def edit(request, list_id):
         return render(request, 'edit.html', {'item': item})
 
 def priority(request, list_id):
-    priority = Priority.objects.get(pk=list_id)
+    priority = List.objects.get(pk=list_id)
     priority.save()
     return redirect('home')
 

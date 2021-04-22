@@ -40,9 +40,9 @@
                     <td><a href="{% url 'edit' todo.id %}">{{ todo.item }}</a></td>
                     <td><center><a href="{% url 'complete' todo.id %}"><div class="bg-light rounded">Complete</div></a></center></td>
                     <td><center>
-                        <a href="{% url 'priority' todo.id %}"><select>
-                            <option>高</option><option>中</option><option>低</option>
-                        </select></a>
+                        <a href="{% url 'priority' todo.id %}">
+                            {{ get_priority_display }}
+                        </a>
                     </center></td>
                     <td><center><a href="{% url 'delete' todo.id %}"><div class="bg-light rounded">Delete</div></a></center></td>
                 </tr>
