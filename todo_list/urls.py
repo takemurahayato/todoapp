@@ -7,5 +7,4 @@ urlpatterns = [
     path('uncomplete/<list_id>', views.uncomplete, name="uncomplete"),
     path('complete/<list_id>', views.complete, name="complete"),
     path('edit/<list_id>', views.edit, name="edit"),
-    path('priority/<list_id>', views.priority, name='priority')
 ]

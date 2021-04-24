@@ -20,7 +20,6 @@
         <tr class="table-primary">
             <th>TO-DO LIST</th>
             <th><center>ステータス</center></th>
-            <th><center>優先度</center></th>
             <th><center>削除</center></th>
         </tr>
         {% for todo in all_items %}
@@ -28,22 +27,12 @@
                 <tr class="table-secondary">
                     <td class="striker"><a href="{% url 'edit' todo.id %}">{{ todo.item }}</a></td>
                     <td><center><a href="{% url 'uncomplete' todo.id %}"><div class="bg-warning rounded">Uncomplete</div></a></center></td>
-                    <td><center>
-                        <a href="{% url 'priority' todo.id %}"><select>
-                            <option>高</option><option>中</option><option>低</option>
-                        </select></a>
-                    </center></td>
                     <td><center><a href="{% url 'delete' todo.id %}"><div class="bg-warning rounded">Delete</div></a></center></td>
                 </tr>
             {% else %}
                 <tr>
                     <td><a href="{% url 'edit' todo.id %}">{{ todo.item }}</a></td>
                     <td><center><a href="{% url 'complete' todo.id %}"><div class="bg-light rounded">Complete</div></a></center></td>
-                    <td><center>
-                        <a href="{% url 'priority' todo.id %}"><select>
-                            <option>高</option><option>中</option><option>低</option>
-                        </select></a>
-                    </center></td>
                     <td><center><a href="{% url 'delete' todo.id %}"><div class="bg-light rounded">Delete</div></a></center></td>
                 </tr>
             {% endif %}

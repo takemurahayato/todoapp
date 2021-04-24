@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import List
 from .forms import ListForm
+from .forms import ChoiceForm
 from django.contrib import messages
 
 #ホーム　タスク一覧
@@ -39,11 +40,14 @@ def complete(request, list_id):
     item.save()
     return redirect('home')
 
+
 #編集
 def edit(request, list_id):
     if request.method == 'POST':
         item = List.objects.get(pk=list_id)
         form = ListForm(request.POST or None, instance=item)
+        priority = ChoiceForm(request.POST)
+        priority.save()
 
         if form.is_valid():
             form.save()
@@ -56,10 +60,6 @@ def edit(request, list_id):
         item = List.objects.get(pk=list_id)
         return render(request, 'edit.html', {'item': item})
 
-def priority(request, list_id):
-    priority = List.objects.get(pk=list_id)
-    priority.save()
-    return redirect('home')
 
 
 
