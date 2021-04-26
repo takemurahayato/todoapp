@@ -3,6 +3,8 @@ from .models import List
 from .forms import ListForm
 from .forms import ChoiceForm
 from django.contrib import messages
+from django.views import View
+from . import forms
 
 #ホーム　タスク一覧
 def home(request):
@@ -46,8 +48,7 @@ def edit(request, list_id):
     if request.method == 'POST':
         item = List.objects.get(pk=list_id)
         form = ListForm(request.POST or None, instance=item)
-        priority = ChoiceForm(request.POST)
-        priority.save()
+        priority = ChoiceForm(request.POST.get('choice'))
 
         if form.is_valid():
             form.save()
@@ -59,6 +60,7 @@ def edit(request, list_id):
     else:
         item = List.objects.get(pk=list_id)
         return render(request, 'edit.html', {'item': item})
+
 
 
 

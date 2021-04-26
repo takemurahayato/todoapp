@@ -10,7 +10,11 @@
           <input type="hidden" value="{{ item.completed }}" name="completed" >
         </form>
         <form class="form-inline my-2 my-lg-0" method="POST">
-            {{ foo.get_choice_display }}
+            {% csrf_token %}
+            <select>
+                <option>高</option>
+                <option>中</option>
+            </select>
         </form>
     {% endif %}
 
